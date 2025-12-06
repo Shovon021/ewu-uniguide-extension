@@ -1,8 +1,25 @@
 # EWU UniGuide - Chrome Extension
 
+[![GitHub release](https://img.shields.io/github/v/release/Shovon021/ewu-uniguide-extension?include_prereleases&label=version)](https://github.com/Shovon021/ewu-uniguide-extension/releases)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green?logo=googlechrome)](https://github.com/Shovon021/ewu-uniguide-extension)
+
 A bilingual (English/বাংলা) chatbot assistant for the East West University CSE Department.
 
-## Features
+---
+
+## 📥 Quick Download
+
+**[⬇️ Download Extension (ZIP)](https://github.com/Shovon021/ewu-uniguide-extension/archive/refs/heads/main.zip)**
+
+Or clone via Git:
+```bash
+git clone https://github.com/Shovon021/ewu-uniguide-extension.git
+```
+
+---
+
+## ✨ Features
 
 - 💬 Floating chat widget (bottom-right corner)
 - 🌐 Bilingual support (English & বাংলা)
@@ -11,22 +28,24 @@ A bilingual (English/বাংলা) chatbot assistant for the East West Univer
 - 📱 Responsive design
 - ⌨️ Typing animation effect
 
-## Installation
+## 🚀 Installation
 
-### Method 1: Load as Unpacked Extension (Developer Mode)
+### Step 1: Download the Extension
 
-1. Download/clone this folder
-2. Open Chrome and go to `chrome://extensions/`
-3. Enable **Developer mode** (toggle in top-right corner)
-4. Click **Load unpacked**
-5. Select this `chrome-extension` folder
-6. The extension icon will appear in your toolbar
+- **Option A:** Click the **[Download ZIP](https://github.com/Shovon021/ewu-uniguide-extension/archive/refs/heads/main.zip)** button above
+- **Option B:** Clone using `git clone https://github.com/Shovon021/ewu-uniguide-extension.git`
 
-### Method 2: Install from ZIP
+### Step 2: Extract the ZIP (if downloaded)
 
-1. Download the extension as a ZIP file
-2. Extract to a folder
-3. Follow steps 2-6 above
+Extract the downloaded `ewu-uniguide-extension-main.zip` to a folder on your computer.
+
+### Step 3: Load in Chrome
+
+1. Open Chrome and go to `chrome://extensions/`
+2. Enable **Developer mode** (toggle in top-right corner)
+3. Click **Load unpacked**
+4. Select the extracted `ewu-uniguide-extension-main` folder
+5. ✅ The extension is now installed!
 
 ## Usage
 
