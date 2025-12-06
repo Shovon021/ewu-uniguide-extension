@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "EWU UniGuide - CSE Assistant",
+    "version": "1.0.0",
+    "description": "Your bilingual campus assistant for East West University CSE Department. Get instant answers about admissions, fees, faculty, courses, and more!",
+    "author": "Sarfaraz Ahamed Shovon",
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://fse.ewubd.edu/*",
+                "*://www.ewubd.edu/*",
+                "*://ewubd.edu/*"
+            ],
+            "js": [
+                "knowledge.js",
+                "knowledge_bn.js",
+                "chatbot.js",
+                "content.js"
+            ],
+            "css": [
+                "widget.css"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "images/*"
+            ],
+            "matches": [
+                "*://fse.ewubd.edu/*",
+                "*://www.ewubd.edu/*",
+                "*://ewubd.edu/*"
+            ]
+        }
+    ]
+}

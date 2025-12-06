@@ -1,0 +1,704 @@
+/* ============================================
+   EWU UniGuide Chrome Extension - Widget Styles
+   ============================================ */
+
+/* Floating Chat Button */
+#ewu-chat-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 99, 235, 0.3);
+    cursor: pointer;
+    z-index: 2147483646;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 32px;
+    animation: ewuPulse 2s infinite;
+    border: 2px solid #e2e8f0;
+}
+
+@keyframes ewuPulse {
+    0% {
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 99, 235, 0.3);
+    }
+
+    70% {
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15), 0 0 0 15px rgba(37, 99, 235, 0);
+    }
+
+    100% {
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+}
+
+#ewu-chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 35px rgba(37, 99, 235, 0.3);
+    border-color: #2563eb;
+    animation: none;
+}
+
+#ewu-chat-button.hidden {
+    transform: scale(0);
+    opacity: 0;
+    animation: none;
+}
+
+#ewu-chat-button img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Active indicator dot */
+.ewu-active-dot {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 14px;
+    height: 14px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 8px #22c55e, 0 0 16px #22c55e;
+    animation: ewuGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes ewuGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 8px #22c55e, 0 0 16px #22c55e;
+    }
+
+    50% {
+        box-shadow: 0 0 12px #22c55e, 0 0 24px #22c55e, 0 0 32px #22c55e;
+    }
+}
+
+/* Chat Widget Container */
+#ewu-uniguide-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 380px;
+    height: 550px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#ewu-uniguide-widget.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Header */
+.ewu-widget-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #152a45 100%);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.ewu-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ewu-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: white;
+}
+
+.ewu-header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.ewu-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ewu-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+}
+
+.ewu-header-right {
+    display: flex;
+    gap: 8px;
+}
+
+.ewu-lang-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.ewu-lang-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.ewu-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.ewu-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Chat Messages Area */
+.ewu-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Message Bubbles */
+.ewu-message {
+    display: flex;
+    gap: 10px;
+    max-width: 90%;
+    animation: ewuSlideIn 0.3s ease;
+}
+
+@keyframes ewuSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ewu-message.bot {
+    align-self: flex-start;
+}
+
+.ewu-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.ewu-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.ewu-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ewu-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.ewu-message.bot .ewu-bubble {
+    background: white;
+    color: #1e293b;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ewu-message.user .ewu-bubble {
+    background: linear-gradient(135deg, #1e3a5f 0%, #152a45 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+/* Typing Indicator */
+.ewu-typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 8px 0;
+}
+
+.ewu-typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    animation: ewuBounce 1.4s infinite ease-in-out;
+}
+
+.ewu-typing-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.ewu-typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ewu-typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes ewuBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Typing Cursor */
+.ewu-typing-cursor {
+    color: #2563eb;
+    font-weight: bold;
+    animation: ewuBlink 0.7s infinite;
+}
+
+@keyframes ewuBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Related Questions */
+.ewu-related {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.ewu-related-label {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.ewu-related-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.ewu-related-chip {
+    background: #f1f5f9;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ewu-related-chip:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+/* Suggestions */
+.ewu-suggestions {
+    padding: 8px 16px;
+    background: #f8fafc;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.ewu-suggestion-chip {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #2563eb;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ewu-suggestion-chip:hover {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* Input Area */
+.ewu-chat-input {
+    padding: 12px 16px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 10px;
+}
+
+.ewu-chat-input input {
+    flex: 1;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 12px 18px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.ewu-chat-input input:focus {
+    border-color: #2563eb;
+}
+
+.ewu-chat-input button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e3a5f 0%, #152a45 100%);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.ewu-chat-input button:hover {
+    transform: scale(1.05);
+}
+
+/* Images in messages */
+.ewu-bubble img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+/* Language Selection */
+.ewu-lang-selection {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.ewu-lang-select-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.ewu-lang-select-btn:hover {
+    border-color: #2563eb;
+    background: #f0f7ff;
+}
+
+/* Scrollbar */
+.ewu-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ewu-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ewu-chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+    #ewu-uniguide-widget {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 100px);
+        bottom: 10px;
+        right: 10px;
+        border-radius: 16px;
+    }
+}
+
+/* ============================================
+   GLASSMORPHISM EFFECT
+   ============================================ */
+#ewu-uniguide-widget {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.ewu-chat-messages {
+    background: rgba(248, 250, 252, 0.70) !important;
+}
+
+/* ============================================
+   DARK MODE STYLES
+   ============================================ */
+#ewu-uniguide-widget.dark-mode {
+    background: rgba(30, 41, 59, 0.98);
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-widget-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-chat-messages {
+    background: rgba(15, 23, 42, 0.95) !important;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-message.bot .ewu-bubble {
+    background: #334155;
+    color: #f1f5f9;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-message.user .ewu-bubble {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-chat-input {
+    background: #1e293b;
+    border-top-color: #334155;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-chat-input input {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-chat-input input::placeholder {
+    color: #64748b;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-suggestions {
+    background: #1e293b;
+    border-top-color: #334155;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-suggestion-chip {
+    background: #334155;
+    border-color: #475569;
+    color: #93c5fd;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-suggestion-chip:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-related-chip {
+    background: #334155;
+    color: #93c5fd;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-lang-selection button {
+    background: #334155;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-lang-selection button:hover {
+    border-color: #3b82f6;
+    background: #1e3a5f;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-avatar {
+    background: #334155;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-typing-dot {
+    background: #64748b;
+}
+
+/* ============================================
+   HEADER ICON BUTTON (Dark Mode Toggle)
+   ============================================ */
+.ewu-icon-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ewu-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   MIC BUTTON (Voice Input)
+   ============================================ */
+.ewu-mic-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.ewu-mic-btn:hover {
+    background: #e2e8f0;
+    color: #1e3a5f;
+}
+
+.ewu-mic-btn.listening {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: white;
+    animation: ewuPulseRed 1s infinite;
+}
+
+@keyframes ewuPulseRed {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-mic-btn {
+    background: #334155;
+    border-color: #475569;
+    color: #94a3b8;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-mic-btn:hover {
+    background: #475569;
+    color: #f1f5f9;
+}
+
+/* ============================================
+   READ ALOUD BUTTON (Text-to-Speech)
+   ============================================ */
+.ewu-speak-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ewu-speak-btn:hover {
+    color: #1e3a5f;
+    background: rgba(30, 58, 95, 0.1);
+}
+
+.ewu-speak-btn.speaking {
+    color: #3b82f6;
+    animation: ewuPulseBlue 1s infinite;
+}
+
+@keyframes ewuPulseBlue {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-speak-btn {
+    color: #64748b;
+}
+
+#ewu-uniguide-widget.dark-mode .ewu-speak-btn:hover {
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.2);
+}
